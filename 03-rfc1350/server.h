@@ -1,5 +1,5 @@
-#ifndef COMMON_1350_H
-#define COMMON_1350_H
+#ifndef SERVER_1350_H
+#define SERVER_1350_H
 
 #define DEFAULT_SERVER_TID 2000
 #define BUFFER_SIZE 512

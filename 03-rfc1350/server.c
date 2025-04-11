@@ -7,14 +7,27 @@
 
 #include "./server.h"
 
-int thread_counter = 0;
+void level_1_prompt(char *msg) { printf("\x1b[32m\e[1m%s\x1b[0m", msg); }
+void level_2_prompt(char *msg) { printf("\x1b[33m\e[3m  %s\x1b[0m", msg); }
+
 int main(int argc, char *argv[]) {
-  int server_fd = create_socket(DEFAULT_SERVER_TID);
+  int server_fd, port;
+  char input[5];
+
+  level_1_prompt("Port number[default 2000]: ");
+
+  // ---------- fetch IP Address ------
+  fgets(input, sizeof input, stdin);
+  if (input[0] == '\n') {
+    strcpy(input, "2000");
+  }
+  port = atoi(input);
+  server_fd = create_socket(port);
   if (server_fd < 0) {
     perror("Failure creating socket");
     exit(1);
   }
-  printf("socket created on port %d\n", DEFAULT_SERVER_TID);
+  printf("socket created on port %d\n", port);
 
   while (1) {
     struct sockaddr_in client_address;
