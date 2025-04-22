@@ -1,1 +1,1 @@
-RFC 867 - Daytime Protocol
+RFC 1350 - TFTP Protocol.
